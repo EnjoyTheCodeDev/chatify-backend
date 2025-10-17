@@ -24,7 +24,7 @@ app.include_router(api_router, prefix="/api")
 app.include_router(ws_router)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://chatify-front-lut6.onrender.com", "http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
