@@ -1,9 +1,14 @@
+import os
+
+from dotenv import load_dotenv
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 from sqlalchemy.pool import NullPool
 
-DATABASE_URL = "postgresql+asyncpg://chatadmin:password@db:5432/meduz_chat"
+load_dotenv()
 
-engine = create_async_engine(DATABASE_URL, echo=True, poolclass=NullPool)
+DB_URL = os.getenv("DB_URL")
+
+engine = create_async_engine(DB_URL, echo=True, poolclass=NullPool)
 AsyncSessionLocal = async_sessionmaker(engine, expire_on_commit=False)
 
 
